@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⑤吗</title>
+    <!-- 引入Tailwind CSS简化样式编写 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- 自定义配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#E63946', // 第五人格主色调（红色）
+                        secondary: '#457B9D', // 辅助色（蓝色）
+                        dark: '#1D3557', // 深色背景
+                    },
+                    fontFamily: {
+                        game: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
+            .bg-gradient-game {
+                background: linear-gradient(135deg, #1D3557 0%, #14213D 100%);
+            }
+            .btn-hover {
+                transition: all 0.3s ease;
+            }
+            .btn-hover:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 25px -5px rgba(230, 57, 70, 0.4);
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark min-h-screen font-game text-white overflow-x-hidden opacity-0 transition-opacity duration-500">
+    <!-- 背景装饰 -->
+    <div class="fixed inset-0 z-0 opacity-20">
+        <div class="absolute top-10 left-10 w-64 h-64 rounded-full bg-primary/30 blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-secondary/30 blur-3xl"></div>
+    </div>
+
+    <main class="relative z-10 container mx-auto px-4 py-12 md:py-20 max-w-4xl">
+        <!-- 页面头部 -->
+        <header class="text-center mb-12">
+            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-4 text-shadow animate-pulse">
+               闺蜜闺蜜想不想和我玩第五人格喵喵喵
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl">
+                欧蒂利斯庄园等你
+            </p>
+        </header>
+
+        <!-- 邀请卡片 -->
+        <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 md:p-8 border border-white/10 shadow-xl mb-10 transform transition-all hover:scale-[1.01]">
+            <!-- 邀请人信息 -->
+            <div class="flex items-center mb-8">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center mr-4">
+                    <i class="fa-solid fa-user-ghost text-3xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold">聚合多元主旨</h2>
+                    <p class="text-gray-400">速来！</p>
+                </div>
+            </div>
+
+            <!-- 游戏选择 -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold mb-4">想玩的模式</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white/5 rounded-lg p-4 text-center border border-white/10 hover:border-primary/50 transition-all cursor-pointer">
+                        <i class="fa-solid fa-users text-2xl text-primary mb-2"></i>
+                        <p>联合狩猎</p>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-4 text-center border border-white/10 hover:border-primary/50 transition-all cursor-pointer">
+                        <i class="fa-solid fa-masks-theater text-2xl text-primary mb-2"></i>
+                        <p>排位赛</p>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-4 text-center border border-white/10 hover:border-primary/50 transition-all cursor-pointer">
+                        <i class="fa-solid fa-dice text-2xl text-primary mb-2"></i>
+                        <p>娱乐模式</p>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-4 text-center border border-white/10 hover:border-primary/50 transition-all cursor-pointer">
+                        <i class="fa-solid fa-compass-drafting text-2xl text-primary mb-2"></i>
+                        <p>自定义</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 时间和备注 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+                    <h3 class="text-lg font-semibold mb-2 flex items-center">
+                        <i class="fa-solid fa-clock text-primary mr-2"></i>
+                        开黑时间
+                    </h3>
+                    <p class="text-gray-300">今晚 20:00 - 23:00</p>
+                </div>
+                <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+                    <h3 class="text-lg font-semibold mb-2 flex items-center">
+                        <i class="fa-solid fa-sticky-note text-primary mr-2"></i>
+                        备注
+                    </h3>
+                    <p class="text-gray-300">我玩双飞记者吓死队友</p>
+                </div>
+            </div>
+
+            <!-- 回应按钮 -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button id="acceptBtn" class="btn-hover bg-gradient-to-r from-primary to-secondary py-3 px-8 rounded-full font-bold text-lg shadow-lg">
+                    <i class="fa-solid fa-check mr-2"></i>
+                    好的，马上到
+                </button>
+                <button id="rejectBtn" class="btn-hover bg-white/10 hover:bg-white/20 py-3 px-8 rounded-full font-bold text-lg border border-white/20">
+                    <i class="fa-solid fa-times mr-2"></i>
+                    没空，下次吧
+                </button>
+            </div>
+        </div>
+
+        <!-- 二次挽留弹窗 (默认隐藏) -->
+        <div id="persuadeModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+            <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+            <div class="relative bg-dark rounded-2xl p-8 max-w-md w-full mx-4 border border-white/10 shadow-2xl">
+                <div class="text-center">
+                    <div class="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fa-solid fa-hand-sparkles text-4xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">冷酷无情的女人我不会原谅你</h3>
+                    <p class="text-gray-300 mb-6">我玩小兑兑带你</p>
+                    <div class="flex gap-4 justify-center">
+                        <button id="persuadeAcceptBtn" class="btn-hover bg-gradient-to-r from-primary to-secondary py-2 px-6 rounded-full font-semibold">
+                            好吧，玩一把
+                        </button>
+                        <button id="persuadeRejectBtn" class="btn-hover bg-white/10 hover:bg-white/20 py-2 px-6 rounded-full font-semibold border border-white/20">
+                            真的没空，下次吧
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 最终响应提示框 (默认隐藏) -->
+        <div id="responseModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+            <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+            <div class="relative bg-dark rounded-2xl p-8 max-w-md w-full mx-4 border border-white/10 shadow-2xl">
+                <div id="responseContent" class="text-center">
+                    <div id="responseIcon" class="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fa-solid fa-check text-4xl text-primary"></i>
+                    </div>
+                    <h3 id="responseTitle" class="text-2xl font-bold mb-2">太棒了！</h3>
+                    <p id="responseText" class="text-gray-300 mb-6">我们马上开黑，等你上线！</p>
+                    <button id="closeModal" class="bg-primary hover:bg-primary/80 py-2 px-6 rounded-full font-semibold transition-colors">
+                        知道了
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="relative z-10 text-center text-gray-500 py-6 text-sm">
+        <p>© 2025 第五人格邀请系统 | 快乐游戏，适度娱乐</p>
+    </footer>
+
+    <script>
+        // 获取DOM元素
+        const acceptBtn = document.getElementById('acceptBtn');
+        const rejectBtn = document.getElementById('rejectBtn');
+        const persuadeModal = document.getElementById('persuadeModal');
+        const persuadeAcceptBtn = document.getElementById('persuadeAcceptBtn');
+        const persuadeRejectBtn = document.getElementById('persuadeRejectBtn');
+        const responseModal = document.getElementById('responseModal');
+        const responseIcon = document.getElementById('responseIcon');
+        const responseTitle = document.getElementById('responseTitle');
+        const responseText = document.getElementById('responseText');
+        const closeModal = document.getElementById('closeModal');
+
+        // 接受邀请
+        acceptBtn.addEventListener('click', () => {
+            showResponse(true);
+        });
+
+        // 第一次拒绝 - 触发二次挽留
+        rejectBtn.addEventListener('click', () => {
+            persuadeModal.classList.remove('hidden');
+        });
+
+        // 二次挽留后接受
+        persuadeAcceptBtn.addEventListener('click', () => {
+            persuadeModal.classList.add('hidden');
+            showResponse(true);
+        });
+
+        // 二次挽留后仍然拒绝
+        persuadeRejectBtn.addEventListener('click', () => {
+            persuadeModal.classList.add('hidden');
+            showResponse(false);
+        });
+
+        // 关闭最终弹窗
+        closeModal.addEventListener('click', () => {
+            responseModal.classList.add('hidden');
+        });
+
+        // 点击弹窗外层关闭
+        document.querySelectorAll('.fixed').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        });
+
+        // 显示最终响应弹窗
+        function showResponse(isAccepted) {
+            if (isAccepted) {
+                // 接受邀请的反馈
+                responseIcon.innerHTML = '<i class="fa-solid fa-check text-4xl text-green-500"></i>';
+                responseIcon.className = 'w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4';
+                responseTitle.textContent = '太棒了！';
+                responseTitle.className = 'text-2xl font-bold mb-2 text-green-500';
+                responseText.textContent = '我们马上开黑，我在庄园等你！';
+            } else {
+                // 最终拒绝的反馈
+                responseIcon.innerHTML = '<i class="fa-solid fa-face-sad-tear text-4xl text-red-500"></i>';
+                responseIcon.className = 'w-20 h-20 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-4';
+                responseTitle.textContent = '太可惜了！';
+                responseTitle.className = 'text-2xl font-bold mb-2 text-red-500';
+                responseText.textContent = '那我只能单排了，记得下次约我一起玩哦！';
+            }
+            responseModal.classList.remove('hidden');
+        }
+
+        // 页面加载动画
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('opacity-100');
+        });
+    </script>
+</body>
+</html>
